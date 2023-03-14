@@ -1,11 +1,14 @@
 --Week 5 - Monday Questions
 
 --1. How many actors are there with the last name ‘Wahlberg’?
-SELECT COUNT(*) 
+SELECT last_name, first_name  
 FROM actor
-WHERE last_name = 'Wahlberg';
+WHERE last_name = 'Wahlberg'
+GROUP BY last_name, first_name;
 
 -- Answer: 2 Nick and Daryl
+Wahlberg	Daryl
+Wahlberg	Nick
 
 --2. How many payments were made between $3.99 and $5.99?
 SELECT COUNT(amount)
@@ -18,17 +21,19 @@ WHERE amount BETWEEN 3.99 AND 5.99;
 SELECT COUNT(film_id), inventory_id, store_id  
 FROM inventory 
 WHERE film_id =7
-GROUP BY inventory_id  ;
+GROUP BY inventory_id;
 
 -- Answer: 5 - 32 and 33 Store 1 and 34-36 Store 2
 
 --4. How many customers have the first name ‘Willie’?
-SELECT COUNT(*), first_name, last_name  
+SELECT first_name, last_name  
 FROM customer
 WHERE first_name LIKE 'Willie'
-GROUP BY first_name, last_name  ;
+GROUP BY first_name, last_name;
 
 -- Answer: 2 - Willie Howell, Willie Markham
+Willie	Howell
+Willie	Markham
 
 --5. What store employee (get the id) sold the most rentals (use the rental table)?
 SELECT staff_id, SUM(staff_id) 
@@ -88,5 +93,6 @@ ORDER BY Count(*)DESC;
 --194	PG
 --178	G
 
-
+SELECT  *
+FROM film_actor
 
